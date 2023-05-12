@@ -1,0 +1,860 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "04/01/2019 13:54:11"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    Expreso
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module Expreso_vlg_sample_tst(
+	Boton_Vaso,
+	Confirmar,
+	LLenado_Agua,
+	Llenado_Cafe,
+	Reloj,
+	Reset,
+	Usuario,
+	sampler_tx
+);
+input  Boton_Vaso;
+input  Confirmar;
+input  LLenado_Agua;
+input  Llenado_Cafe;
+input  Reloj;
+input  Reset;
+input [1:0] Usuario;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(Boton_Vaso or Confirmar or LLenado_Agua or Llenado_Cafe or Reloj or Reset or Usuario)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module Expreso_vlg_check_tst (
+	Expreso_Tipo,
+	Led_Expreso_Listo,
+	Led_Llenar_Almacenamiento,
+	look_state,
+	relojito,
+	Valvula_Agua,
+	Valvula_Cafe,
+	ver_acabadot,
+	ver_conteo,
+	sampler_rx
+);
+input [6:0] Expreso_Tipo;
+input  Led_Expreso_Listo;
+input  Led_Llenar_Almacenamiento;
+input [14:0] look_state;
+input  relojito;
+input  Valvula_Agua;
+input  Valvula_Cafe;
+input  ver_acabadot;
+input  ver_conteo;
+input sampler_rx;
+
+reg [6:0] Expreso_Tipo_expected;
+reg  Led_Expreso_Listo_expected;
+reg  Led_Llenar_Almacenamiento_expected;
+reg [14:0] look_state_expected;
+reg  relojito_expected;
+reg  Valvula_Agua_expected;
+reg  Valvula_Cafe_expected;
+reg  ver_acabadot_expected;
+reg  ver_conteo_expected;
+
+reg [6:0] Expreso_Tipo_prev;
+reg  Led_Expreso_Listo_prev;
+reg  Led_Llenar_Almacenamiento_prev;
+reg [14:0] look_state_prev;
+reg  relojito_prev;
+reg  Valvula_Agua_prev;
+reg  Valvula_Cafe_prev;
+reg  ver_acabadot_prev;
+reg  ver_conteo_prev;
+
+reg [6:0] Expreso_Tipo_expected_prev;
+reg  Led_Expreso_Listo_expected_prev;
+reg  Led_Llenar_Almacenamiento_expected_prev;
+reg [14:0] look_state_expected_prev;
+reg  relojito_expected_prev;
+reg  Valvula_Agua_expected_prev;
+reg  Valvula_Cafe_expected_prev;
+reg  ver_acabadot_expected_prev;
+reg  ver_conteo_expected_prev;
+
+reg [6:0] last_Expreso_Tipo_exp;
+reg  last_Led_Expreso_Listo_exp;
+reg  last_Led_Llenar_Almacenamiento_exp;
+reg [14:0] last_look_state_exp;
+reg  last_relojito_exp;
+reg  last_Valvula_Agua_exp;
+reg  last_Valvula_Cafe_exp;
+reg  last_ver_acabadot_exp;
+reg  last_ver_conteo_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:9] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 9'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	Expreso_Tipo_prev = Expreso_Tipo;
+	Led_Expreso_Listo_prev = Led_Expreso_Listo;
+	Led_Llenar_Almacenamiento_prev = Led_Llenar_Almacenamiento;
+	look_state_prev = look_state;
+	relojito_prev = relojito;
+	Valvula_Agua_prev = Valvula_Agua;
+	Valvula_Cafe_prev = Valvula_Cafe;
+	ver_acabadot_prev = ver_acabadot;
+	ver_conteo_prev = ver_conteo;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	Expreso_Tipo_expected_prev = Expreso_Tipo_expected;
+	Led_Expreso_Listo_expected_prev = Led_Expreso_Listo_expected;
+	Led_Llenar_Almacenamiento_expected_prev = Led_Llenar_Almacenamiento_expected;
+	look_state_expected_prev = look_state_expected;
+	relojito_expected_prev = relojito_expected;
+	Valvula_Agua_expected_prev = Valvula_Agua_expected;
+	Valvula_Cafe_expected_prev = Valvula_Cafe_expected;
+	ver_acabadot_expected_prev = ver_acabadot_expected;
+	ver_conteo_expected_prev = ver_conteo_expected;
+end
+
+
+// expected Expreso_Tipo[ 6 ]
+initial
+begin
+	Expreso_Tipo_expected[6] = 1'bX;
+end 
+// expected Expreso_Tipo[ 5 ]
+initial
+begin
+	Expreso_Tipo_expected[5] = 1'bX;
+end 
+// expected Expreso_Tipo[ 4 ]
+initial
+begin
+	Expreso_Tipo_expected[4] = 1'bX;
+end 
+// expected Expreso_Tipo[ 3 ]
+initial
+begin
+	Expreso_Tipo_expected[3] = 1'bX;
+end 
+// expected Expreso_Tipo[ 2 ]
+initial
+begin
+	Expreso_Tipo_expected[2] = 1'bX;
+end 
+// expected Expreso_Tipo[ 1 ]
+initial
+begin
+	Expreso_Tipo_expected[1] = 1'bX;
+end 
+// expected Expreso_Tipo[ 0 ]
+initial
+begin
+	Expreso_Tipo_expected[0] = 1'bX;
+end 
+
+// expected Led_Expreso_Listo
+initial
+begin
+	Led_Expreso_Listo_expected = 1'bX;
+end 
+
+// expected Led_Llenar_Almacenamiento
+initial
+begin
+	Led_Llenar_Almacenamiento_expected = 1'bX;
+end 
+// expected look_state[ 14 ]
+initial
+begin
+	look_state_expected[14] = 1'bX;
+end 
+// expected look_state[ 13 ]
+initial
+begin
+	look_state_expected[13] = 1'bX;
+end 
+// expected look_state[ 12 ]
+initial
+begin
+	look_state_expected[12] = 1'bX;
+end 
+// expected look_state[ 11 ]
+initial
+begin
+	look_state_expected[11] = 1'bX;
+end 
+// expected look_state[ 10 ]
+initial
+begin
+	look_state_expected[10] = 1'bX;
+end 
+// expected look_state[ 9 ]
+initial
+begin
+	look_state_expected[9] = 1'bX;
+end 
+// expected look_state[ 8 ]
+initial
+begin
+	look_state_expected[8] = 1'bX;
+end 
+// expected look_state[ 7 ]
+initial
+begin
+	look_state_expected[7] = 1'bX;
+end 
+// expected look_state[ 6 ]
+initial
+begin
+	look_state_expected[6] = 1'bX;
+end 
+// expected look_state[ 5 ]
+initial
+begin
+	look_state_expected[5] = 1'bX;
+end 
+// expected look_state[ 4 ]
+initial
+begin
+	look_state_expected[4] = 1'bX;
+end 
+// expected look_state[ 3 ]
+initial
+begin
+	look_state_expected[3] = 1'bX;
+end 
+// expected look_state[ 2 ]
+initial
+begin
+	look_state_expected[2] = 1'bX;
+end 
+// expected look_state[ 1 ]
+initial
+begin
+	look_state_expected[1] = 1'bX;
+end 
+// expected look_state[ 0 ]
+initial
+begin
+	look_state_expected[0] = 1'bX;
+end 
+
+// expected relojito
+initial
+begin
+	relojito_expected = 1'bX;
+end 
+
+// expected Valvula_Agua
+initial
+begin
+	Valvula_Agua_expected = 1'bX;
+end 
+
+// expected Valvula_Cafe
+initial
+begin
+	Valvula_Cafe_expected = 1'bX;
+end 
+
+// expected ver_acabadot
+initial
+begin
+	ver_acabadot_expected = 1'bX;
+end 
+
+// expected ver_conteo
+initial
+begin
+	ver_conteo_expected = 1'bX;
+end 
+// generate trigger
+always @(Expreso_Tipo_expected or Expreso_Tipo or Led_Expreso_Listo_expected or Led_Expreso_Listo or Led_Llenar_Almacenamiento_expected or Led_Llenar_Almacenamiento or look_state_expected or look_state or relojito_expected or relojito or Valvula_Agua_expected or Valvula_Agua or Valvula_Cafe_expected or Valvula_Cafe or ver_acabadot_expected or ver_acabadot or ver_conteo_expected or ver_conteo)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected Expreso_Tipo = %b | expected Led_Expreso_Listo = %b | expected Led_Llenar_Almacenamiento = %b | expected look_state = %b | expected relojito = %b | expected Valvula_Agua = %b | expected Valvula_Cafe = %b | expected ver_acabadot = %b | expected ver_conteo = %b | ",Expreso_Tipo_expected_prev,Led_Expreso_Listo_expected_prev,Led_Llenar_Almacenamiento_expected_prev,look_state_expected_prev,relojito_expected_prev,Valvula_Agua_expected_prev,Valvula_Cafe_expected_prev,ver_acabadot_expected_prev,ver_conteo_expected_prev);
+	$display("| real Expreso_Tipo = %b | real Led_Expreso_Listo = %b | real Led_Llenar_Almacenamiento = %b | real look_state = %b | real relojito = %b | real Valvula_Agua = %b | real Valvula_Cafe = %b | real ver_acabadot = %b | real ver_conteo = %b | ",Expreso_Tipo_prev,Led_Expreso_Listo_prev,Led_Llenar_Almacenamiento_prev,look_state_prev,relojito_prev,Valvula_Agua_prev,Valvula_Cafe_prev,ver_acabadot_prev,ver_conteo_prev);
+`endif
+	if (
+		( Expreso_Tipo_expected_prev[0] !== 1'bx ) && ( Expreso_Tipo_prev[0] !== Expreso_Tipo_expected_prev[0] )
+		&& ((Expreso_Tipo_expected_prev[0] !== last_Expreso_Tipo_exp[0]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Expreso_Tipo[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Expreso_Tipo_expected_prev);
+		$display ("     Real value = %b", Expreso_Tipo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Expreso_Tipo_exp[0] = Expreso_Tipo_expected_prev[0];
+	end
+	if (
+		( Expreso_Tipo_expected_prev[1] !== 1'bx ) && ( Expreso_Tipo_prev[1] !== Expreso_Tipo_expected_prev[1] )
+		&& ((Expreso_Tipo_expected_prev[1] !== last_Expreso_Tipo_exp[1]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Expreso_Tipo[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Expreso_Tipo_expected_prev);
+		$display ("     Real value = %b", Expreso_Tipo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Expreso_Tipo_exp[1] = Expreso_Tipo_expected_prev[1];
+	end
+	if (
+		( Expreso_Tipo_expected_prev[2] !== 1'bx ) && ( Expreso_Tipo_prev[2] !== Expreso_Tipo_expected_prev[2] )
+		&& ((Expreso_Tipo_expected_prev[2] !== last_Expreso_Tipo_exp[2]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Expreso_Tipo[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Expreso_Tipo_expected_prev);
+		$display ("     Real value = %b", Expreso_Tipo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Expreso_Tipo_exp[2] = Expreso_Tipo_expected_prev[2];
+	end
+	if (
+		( Expreso_Tipo_expected_prev[3] !== 1'bx ) && ( Expreso_Tipo_prev[3] !== Expreso_Tipo_expected_prev[3] )
+		&& ((Expreso_Tipo_expected_prev[3] !== last_Expreso_Tipo_exp[3]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Expreso_Tipo[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Expreso_Tipo_expected_prev);
+		$display ("     Real value = %b", Expreso_Tipo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Expreso_Tipo_exp[3] = Expreso_Tipo_expected_prev[3];
+	end
+	if (
+		( Expreso_Tipo_expected_prev[4] !== 1'bx ) && ( Expreso_Tipo_prev[4] !== Expreso_Tipo_expected_prev[4] )
+		&& ((Expreso_Tipo_expected_prev[4] !== last_Expreso_Tipo_exp[4]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Expreso_Tipo[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Expreso_Tipo_expected_prev);
+		$display ("     Real value = %b", Expreso_Tipo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Expreso_Tipo_exp[4] = Expreso_Tipo_expected_prev[4];
+	end
+	if (
+		( Expreso_Tipo_expected_prev[5] !== 1'bx ) && ( Expreso_Tipo_prev[5] !== Expreso_Tipo_expected_prev[5] )
+		&& ((Expreso_Tipo_expected_prev[5] !== last_Expreso_Tipo_exp[5]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Expreso_Tipo[5] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Expreso_Tipo_expected_prev);
+		$display ("     Real value = %b", Expreso_Tipo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Expreso_Tipo_exp[5] = Expreso_Tipo_expected_prev[5];
+	end
+	if (
+		( Expreso_Tipo_expected_prev[6] !== 1'bx ) && ( Expreso_Tipo_prev[6] !== Expreso_Tipo_expected_prev[6] )
+		&& ((Expreso_Tipo_expected_prev[6] !== last_Expreso_Tipo_exp[6]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Expreso_Tipo[6] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Expreso_Tipo_expected_prev);
+		$display ("     Real value = %b", Expreso_Tipo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Expreso_Tipo_exp[6] = Expreso_Tipo_expected_prev[6];
+	end
+	if (
+		( Led_Expreso_Listo_expected_prev !== 1'bx ) && ( Led_Expreso_Listo_prev !== Led_Expreso_Listo_expected_prev )
+		&& ((Led_Expreso_Listo_expected_prev !== last_Led_Expreso_Listo_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Led_Expreso_Listo :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Led_Expreso_Listo_expected_prev);
+		$display ("     Real value = %b", Led_Expreso_Listo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_Led_Expreso_Listo_exp = Led_Expreso_Listo_expected_prev;
+	end
+	if (
+		( Led_Llenar_Almacenamiento_expected_prev !== 1'bx ) && ( Led_Llenar_Almacenamiento_prev !== Led_Llenar_Almacenamiento_expected_prev )
+		&& ((Led_Llenar_Almacenamiento_expected_prev !== last_Led_Llenar_Almacenamiento_exp) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Led_Llenar_Almacenamiento :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Led_Llenar_Almacenamiento_expected_prev);
+		$display ("     Real value = %b", Led_Llenar_Almacenamiento_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_Led_Llenar_Almacenamiento_exp = Led_Llenar_Almacenamiento_expected_prev;
+	end
+	if (
+		( look_state_expected_prev[0] !== 1'bx ) && ( look_state_prev[0] !== look_state_expected_prev[0] )
+		&& ((look_state_expected_prev[0] !== last_look_state_exp[0]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[0] = look_state_expected_prev[0];
+	end
+	if (
+		( look_state_expected_prev[1] !== 1'bx ) && ( look_state_prev[1] !== look_state_expected_prev[1] )
+		&& ((look_state_expected_prev[1] !== last_look_state_exp[1]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[1] = look_state_expected_prev[1];
+	end
+	if (
+		( look_state_expected_prev[2] !== 1'bx ) && ( look_state_prev[2] !== look_state_expected_prev[2] )
+		&& ((look_state_expected_prev[2] !== last_look_state_exp[2]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[2] = look_state_expected_prev[2];
+	end
+	if (
+		( look_state_expected_prev[3] !== 1'bx ) && ( look_state_prev[3] !== look_state_expected_prev[3] )
+		&& ((look_state_expected_prev[3] !== last_look_state_exp[3]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[3] = look_state_expected_prev[3];
+	end
+	if (
+		( look_state_expected_prev[4] !== 1'bx ) && ( look_state_prev[4] !== look_state_expected_prev[4] )
+		&& ((look_state_expected_prev[4] !== last_look_state_exp[4]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[4] = look_state_expected_prev[4];
+	end
+	if (
+		( look_state_expected_prev[5] !== 1'bx ) && ( look_state_prev[5] !== look_state_expected_prev[5] )
+		&& ((look_state_expected_prev[5] !== last_look_state_exp[5]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[5] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[5] = look_state_expected_prev[5];
+	end
+	if (
+		( look_state_expected_prev[6] !== 1'bx ) && ( look_state_prev[6] !== look_state_expected_prev[6] )
+		&& ((look_state_expected_prev[6] !== last_look_state_exp[6]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[6] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[6] = look_state_expected_prev[6];
+	end
+	if (
+		( look_state_expected_prev[7] !== 1'bx ) && ( look_state_prev[7] !== look_state_expected_prev[7] )
+		&& ((look_state_expected_prev[7] !== last_look_state_exp[7]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[7] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[7] = look_state_expected_prev[7];
+	end
+	if (
+		( look_state_expected_prev[8] !== 1'bx ) && ( look_state_prev[8] !== look_state_expected_prev[8] )
+		&& ((look_state_expected_prev[8] !== last_look_state_exp[8]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[8] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[8] = look_state_expected_prev[8];
+	end
+	if (
+		( look_state_expected_prev[9] !== 1'bx ) && ( look_state_prev[9] !== look_state_expected_prev[9] )
+		&& ((look_state_expected_prev[9] !== last_look_state_exp[9]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[9] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[9] = look_state_expected_prev[9];
+	end
+	if (
+		( look_state_expected_prev[10] !== 1'bx ) && ( look_state_prev[10] !== look_state_expected_prev[10] )
+		&& ((look_state_expected_prev[10] !== last_look_state_exp[10]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[10] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[10] = look_state_expected_prev[10];
+	end
+	if (
+		( look_state_expected_prev[11] !== 1'bx ) && ( look_state_prev[11] !== look_state_expected_prev[11] )
+		&& ((look_state_expected_prev[11] !== last_look_state_exp[11]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[11] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[11] = look_state_expected_prev[11];
+	end
+	if (
+		( look_state_expected_prev[12] !== 1'bx ) && ( look_state_prev[12] !== look_state_expected_prev[12] )
+		&& ((look_state_expected_prev[12] !== last_look_state_exp[12]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[12] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[12] = look_state_expected_prev[12];
+	end
+	if (
+		( look_state_expected_prev[13] !== 1'bx ) && ( look_state_prev[13] !== look_state_expected_prev[13] )
+		&& ((look_state_expected_prev[13] !== last_look_state_exp[13]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[13] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[13] = look_state_expected_prev[13];
+	end
+	if (
+		( look_state_expected_prev[14] !== 1'bx ) && ( look_state_prev[14] !== look_state_expected_prev[14] )
+		&& ((look_state_expected_prev[14] !== last_look_state_exp[14]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port look_state[14] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", look_state_expected_prev);
+		$display ("     Real value = %b", look_state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_look_state_exp[14] = look_state_expected_prev[14];
+	end
+	if (
+		( relojito_expected_prev !== 1'bx ) && ( relojito_prev !== relojito_expected_prev )
+		&& ((relojito_expected_prev !== last_relojito_exp) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port relojito :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", relojito_expected_prev);
+		$display ("     Real value = %b", relojito_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_relojito_exp = relojito_expected_prev;
+	end
+	if (
+		( Valvula_Agua_expected_prev !== 1'bx ) && ( Valvula_Agua_prev !== Valvula_Agua_expected_prev )
+		&& ((Valvula_Agua_expected_prev !== last_Valvula_Agua_exp) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Valvula_Agua :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Valvula_Agua_expected_prev);
+		$display ("     Real value = %b", Valvula_Agua_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_Valvula_Agua_exp = Valvula_Agua_expected_prev;
+	end
+	if (
+		( Valvula_Cafe_expected_prev !== 1'bx ) && ( Valvula_Cafe_prev !== Valvula_Cafe_expected_prev )
+		&& ((Valvula_Cafe_expected_prev !== last_Valvula_Cafe_exp) ||
+			on_first_change[7])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Valvula_Cafe :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Valvula_Cafe_expected_prev);
+		$display ("     Real value = %b", Valvula_Cafe_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[7] = 1'b0;
+		last_Valvula_Cafe_exp = Valvula_Cafe_expected_prev;
+	end
+	if (
+		( ver_acabadot_expected_prev !== 1'bx ) && ( ver_acabadot_prev !== ver_acabadot_expected_prev )
+		&& ((ver_acabadot_expected_prev !== last_ver_acabadot_exp) ||
+			on_first_change[8])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port ver_acabadot :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", ver_acabadot_expected_prev);
+		$display ("     Real value = %b", ver_acabadot_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[8] = 1'b0;
+		last_ver_acabadot_exp = ver_acabadot_expected_prev;
+	end
+	if (
+		( ver_conteo_expected_prev !== 1'bx ) && ( ver_conteo_prev !== ver_conteo_expected_prev )
+		&& ((ver_conteo_expected_prev !== last_ver_conteo_exp) ||
+			on_first_change[9])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port ver_conteo :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", ver_conteo_expected_prev);
+		$display ("     Real value = %b", ver_conteo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[9] = 1'b0;
+		last_ver_conteo_exp = ver_conteo_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module Expreso_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg Boton_Vaso;
+reg Confirmar;
+reg LLenado_Agua;
+reg Llenado_Cafe;
+reg Reloj;
+reg Reset;
+reg [1:0] Usuario;
+// wires                                               
+wire [6:0] Expreso_Tipo;
+wire Led_Expreso_Listo;
+wire Led_Llenar_Almacenamiento;
+wire [14:0] look_state;
+wire relojito;
+wire Valvula_Agua;
+wire Valvula_Cafe;
+wire ver_acabadot;
+wire ver_conteo;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+Expreso i1 (
+// port map - connection between master ports and signals/registers   
+	.Boton_Vaso(Boton_Vaso),
+	.Confirmar(Confirmar),
+	.Expreso_Tipo(Expreso_Tipo),
+	.Led_Expreso_Listo(Led_Expreso_Listo),
+	.Led_Llenar_Almacenamiento(Led_Llenar_Almacenamiento),
+	.LLenado_Agua(LLenado_Agua),
+	.Llenado_Cafe(Llenado_Cafe),
+	.look_state(look_state),
+	.Reloj(Reloj),
+	.relojito(relojito),
+	.Reset(Reset),
+	.Usuario(Usuario),
+	.Valvula_Agua(Valvula_Agua),
+	.Valvula_Cafe(Valvula_Cafe),
+	.ver_acabadot(ver_acabadot),
+	.ver_conteo(ver_conteo)
+);
+
+// Reloj
+always
+begin
+	Reloj = 1'b0;
+	Reloj = #10000 1'b1;
+	#10000;
+end 
+
+// Reset
+initial
+begin
+	Reset = 1'b1;
+	Reset = #10000 1'b0;
+	Reset = #10000 1'b1;
+end 
+
+// Confirmar
+initial
+begin
+	Confirmar = 1'b1;
+	Confirmar = #40000 1'b0;
+	Confirmar = #10000 1'b1;
+end 
+
+// Boton_Vaso
+initial
+begin
+	Boton_Vaso = 1'b0;
+	Boton_Vaso = #100000 1'b1;
+	Boton_Vaso = #20000 1'b0;
+end 
+
+// LLenado_Agua
+initial
+begin
+	LLenado_Agua = 1'b0;
+end 
+
+// Llenado_Cafe
+initial
+begin
+	Llenado_Cafe = 1'b0;
+end 
+// Usuario[ 1 ]
+initial
+begin
+	Usuario[1] = 1'b0;
+end 
+// Usuario[ 0 ]
+initial
+begin
+	Usuario[0] = 1'b0;
+end 
+
+Expreso_vlg_sample_tst tb_sample (
+	.Boton_Vaso(Boton_Vaso),
+	.Confirmar(Confirmar),
+	.LLenado_Agua(LLenado_Agua),
+	.Llenado_Cafe(Llenado_Cafe),
+	.Reloj(Reloj),
+	.Reset(Reset),
+	.Usuario(Usuario),
+	.sampler_tx(sampler)
+);
+
+Expreso_vlg_check_tst tb_out(
+	.Expreso_Tipo(Expreso_Tipo),
+	.Led_Expreso_Listo(Led_Expreso_Listo),
+	.Led_Llenar_Almacenamiento(Led_Llenar_Almacenamiento),
+	.look_state(look_state),
+	.relojito(relojito),
+	.Valvula_Agua(Valvula_Agua),
+	.Valvula_Cafe(Valvula_Cafe),
+	.ver_acabadot(ver_acabadot),
+	.ver_conteo(ver_conteo),
+	.sampler_rx(sampler)
+);
+endmodule
+

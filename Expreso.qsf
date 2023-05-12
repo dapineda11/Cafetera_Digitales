@@ -1,0 +1,160 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2013 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+# Date created = 16:57:53  March 24, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		Expreso_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE EP3C16F484C6
+set_global_assignment -name TOP_LEVEL_ENTITY Expreso
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:57:53  MARCH 24, 2019"
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VHDL_FILE Expreso.vhd
+set_global_assignment -name VHDL_FILE Deco_7_Seg/Deco_7_Seg.vhd
+set_global_assignment -name VHDL_FILE Expreso_Dispo/Expreso_Dispo.vhd
+set_global_assignment -name VHDL_FILE Expreso_Dispo/Comp_A/Comp_A.vhd
+set_global_assignment -name VHDL_FILE Expreso_Dispo/Comp_C/Comp_C.vhd
+set_global_assignment -name VHDL_FILE Tipo_Expreso/Tipo_Expreso.vhd
+set_global_assignment -name VHDL_FILE Conteo_1/Conteo_1.vhd
+set_global_assignment -name VHDL_FILE Conteo_2/Conteo_2.vhd
+set_global_assignment -name VHDL_FILE Conteo_3/Conteo_3.vhd
+set_global_assignment -name VHDL_FILE Conteo_4/Conteo_4.vhd
+set_global_assignment -name VHDL_FILE Conteo_E1/Conteo_E1.vhd
+set_global_assignment -name VHDL_FILE Conteo_E2/Conteo_E2.vhd
+set_global_assignment -name VHDL_FILE Conteo_E4/Conteo_E4.vhd
+set_global_assignment -name VHDL_FILE Conteo_E3/Conteo_E3.vhd
+set_global_assignment -name VHDL_FILE Cantidad_Agua/Cantidad_Agua.vhd
+set_global_assignment -name VHDL_FILE Cantidad_Cafe/Cantidad_Cafe.vhd
+set_global_assignment -name VHDL_FILE Contador_Agua/Contador_Agua.vhd
+set_global_assignment -name VHDL_FILE Contador_Cafe/Contador_Cafe.vhd
+set_global_assignment -name VHDL_FILE Control/Control.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
+set_global_assignment -name SIMULATION_MODE TIMING
+set_global_assignment -name VECTOR_OUTPUT_FORMAT VWF
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform1.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform2.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform3.vwf
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform4.vwf
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_G21 -to Reloj
+set_location_assignment PIN_H2 -to Reset
+set_location_assignment PIN_J6 -to Usuario[1]
+set_location_assignment PIN_H5 -to Usuario[0]
+set_location_assignment PIN_G3 -to Boton_Vaso
+set_location_assignment PIN_F1 -to Confirmar
+set_location_assignment PIN_E11 -to Expreso_Tipo[0]
+set_location_assignment PIN_F13 -to Expreso_Tipo[6]
+set_location_assignment PIN_F12 -to Expreso_Tipo[5]
+set_location_assignment PIN_G12 -to Expreso_Tipo[4]
+set_location_assignment PIN_H13 -to Expreso_Tipo[3]
+set_location_assignment PIN_H12 -to Expreso_Tipo[2]
+set_location_assignment PIN_F11 -to Expreso_Tipo[1]
+set_location_assignment PIN_J3 -to Led_Expreso_Listo
+set_location_assignment PIN_H1 -to Led_Llenar_Almacenamiento
+set_location_assignment PIN_H6 -to LLenado_Agua
+set_location_assignment PIN_G4 -to Llenado_Cafe
+set_location_assignment PIN_V14 -to Valvula_Agua
+set_location_assignment PIN_Y13 -to Valvula_Cafe
+set_location_assignment PIN_AB3 -to relojito
+set_location_assignment PIN_AA13 -to look_state[0]
+set_location_assignment PIN_AA10 -to look_state[1]
+set_location_assignment PIN_AA8 -to look_state[2]
+set_location_assignment PIN_AA5 -to look_state[3]
+set_location_assignment PIN_AB4 -to look_state[4]
+set_location_assignment PIN_AA4 -to look_state[5]
+set_location_assignment PIN_U14 -to look_state[6]
+set_location_assignment PIN_W13 -to look_state[7]
+set_location_assignment PIN_V12 -to look_state[8]
+set_location_assignment PIN_V11 -to look_state[9]
+set_location_assignment PIN_W10 -to look_state[10]
+set_location_assignment PIN_V8 -to look_state[11]
+set_location_assignment PIN_W6 -to look_state[12]
+set_location_assignment PIN_U7 -to look_state[13]
+set_location_assignment PIN_D2 -to look_state[14]
+set_location_assignment PIN_D6 -to ver_acabadot
+set_location_assignment PIN_D10 -to ver_conteo
+set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform5.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform6.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform7.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform8.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform9.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform10.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform11.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform12.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform13.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform14.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform15.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform16.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform17.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform18.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform19.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform20.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform21.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform22.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform23.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform24.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform25.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform26.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform27.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform28.vwf
+set_global_assignment -name CDF_FILE output_files/output_files/Chain3.cdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform1.vwf
+set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "C:/Users/estudiante/Desktop/Expreso/simulation/qsim/" -section_id eda_simulation
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform29.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform30.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform31.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform32.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform33.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform34.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform35.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform36.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform37.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform38.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/estudiante/Desktop/Expreso/Waveform38.vwf"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

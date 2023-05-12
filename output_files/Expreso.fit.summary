@@ -1,0 +1,10 @@
+I/O Assignment Analysis Status : Successful - Mon Apr 01 16:38:06 2019
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : Expreso
+Top-level Entity Name : Expreso
+Family : Cyclone III
+Device : EP3C16F484C6
+Timing Models : Final
+Total pins : 37 / 347 ( 11 % )
+Total virtual pins : 0
+Total PLLs : 0 / 4 ( 0 % )

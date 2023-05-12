@@ -1,0 +1,47 @@
+--**Decodificador de 2 a 4 bis**--
+
+
+library IEEE; 
+use IEEE.std_logic_1164.all; 
+
+--******************************************************--
+-- Autor:   --
+--     Julian Oviedo   --
+--   --
+--                --
+--******************************************************--
+
+entity  Tipo_Expreso is
+port(
+
+ Usuario: in std_logic_vector (1 downto 0) ; -- a b
+ Tipo_Expreso_Expreso_Disponible : out std_logic_vector (9 downto 0)-- a b c d
+ 
+);
+        
+end entity  Tipo_Expreso;     
+
+architecture  Tipo_ExpresoArch of  Tipo_Expreso is
+begin
+
+--Agua--
+Tipo_Expreso_Expreso_Disponible(0) <= (not Usuario(0) and  Usuario(1));
+Tipo_Expreso_Expreso_Disponible(1) <= ((not Usuario(0) and not Usuario(1))or (not Usuario(0) and Usuario(1))) ;
+Tipo_Expreso_Expreso_Disponible(2) <= ((not Usuario(0) and not Usuario(1))or (not Usuario(0) and Usuario(1)) or ( Usuario(0) and not Usuario(1))) ;--10
+Tipo_Expreso_Expreso_Disponible(3) <= ((not Usuario(0) and not Usuario(1)) or(not Usuario(0) and  Usuario(1)) or ( Usuario(0) and not Usuario(1)) or ( Usuario(0) and  Usuario(1)) );--11
+Tipo_Expreso_Expreso_Disponible(4) <= ((not Usuario(0) and not Usuario(1))or ( Usuario(0) and not Usuario(1))) ;
+Tipo_Expreso_Expreso_Disponible(5) <= (( Usuario(0) and not Usuario(1))or ( Usuario(0) and Usuario(1))) ;
+ 
+ --Cafe--
+Tipo_Expreso_Expreso_Disponible(6) <= (not Usuario(0) and not Usuario(1));
+Tipo_Expreso_Expreso_Disponible(7) <= ((not Usuario(0) and not Usuario(1)) or(not Usuario(0) and  Usuario(1)) or ( Usuario(0) and not Usuario(1)) or ( Usuario(0) and  Usuario(1)) );
+Tipo_Expreso_Expreso_Disponible(8) <= ((not Usuario(0) and not Usuario(1)) or(not Usuario(0) and  Usuario(1)) or ( Usuario(0) and not Usuario(1)) or ( Usuario(0) and  Usuario(1)) );
+Tipo_Expreso_Expreso_Disponible(9) <= ( Usuario(0) and not Usuario(1));
+ 
+ 
+ 
+End  Tipo_ExpresoArch;
+
+
+
+

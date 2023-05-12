@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\estudiante\Desktop\Proyecto_1\Expreso\simulation\qsim
+vExpreso
+Z1 I3DPTQEHHJ614>;Hi6Q9BX3
+Z2 Vc0PMVe3IVWRD=B>kb639d2
+Z3 dC:\Users\estudiante\Desktop\Expreso\simulation\qsim
+Z4 w1554144853
+Z5 8Expreso.vo
+Z6 FExpreso.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 !s90 -work|work|Expreso.vo|
+Z9 o-work work -O0
+Z10 n@expreso
+!i10b 1
+Z11 !s100 ?k[55ae3m@K5XTn>NF7IT2
+!s85 0
+Z12 !s108 1554144858.406000
+Z13 !s107 Expreso.vo|
+!s101 -O0
+vExpreso_vlg_check_tst
+!i10b 1
+!s100 hF7_Yl;lc;jKNK=?ZM95^3
+I4JWg17B@4L]LL[DZ;aIDz2
+Z14 V_TCHN>I87Pd;TEUb9KVjR3
+R3
+Z15 w1554144852
+Z16 8Waveform1.vwf.vt
+Z17 FWaveform1.vwf.vt
+L0 69
+R7
+r1
+!s85 0
+31
+Z18 !s108 1554144859.093000
+Z19 !s107 Waveform1.vwf.vt|
+Z20 !s90 -work|work|Waveform1.vwf.vt|
+!s101 -O0
+R9
+Z21 n@expreso_vlg_check_tst
+vExpreso_vlg_sample_tst
+!i10b 1
+!s100 Xa1gjdnYbFg]hDlBV@eB:3
+ImXi_;UV93^52ZIY;K_zO;3
+Z22 Vi`BUj@:C8>NMij[bj?RH23
+R3
+R15
+R16
+R17
+L0 29
+R7
+r1
+!s85 0
+31
+R18
+R19
+R20
+!s101 -O0
+R9
+Z23 n@expreso_vlg_sample_tst
+vExpreso_vlg_vec_tst
+!i10b 1
+!s100 nG`5CE8bl8oT0Fz9jPml83
+IQ2lM]3dQJ@[_^VU;XAba@1
+Z24 VL`DSNi7iM^^D8T:nde=Ib1
+R3
+R15
+R16
+R17
+Z25 L0 738
+R7
+r1
+!s85 0
+31
+R18
+R19
+R20
+!s101 -O0
+R9
+Z26 n@expreso_vlg_vec_tst

@@ -1,0 +1,232 @@
+--*******************Bloque General****************************************--
+--Definicion de las bibliotecas 
+library IEEE; 
+use IEEE.std_logic_1164.all;
+
+--***********************************************************--
+--               DEFINICIÓN DE ENTIDAD                       --
+--***********************************************************--
+
+entity Expreso is
+
+port(
+		--entradas y salidas del sistema
+		Reloj			  : IN std_logic; --Reloj por defecto
+		Reset			  : IN std_logic; --Reset por defecto
+		Usuario   : in std_logic_vector(1 downto 0); --Datos ingresados por el usuario
+		Llenado_Cafe: in std_logic;
+		LLenado_Agua : in std_logic;
+		Confirmar : in std_logic;
+		Boton_Vaso : in std_logic;
+		
+
+		relojito          : out std_logic;		--Señal para visualizar el reloj
+		Expreso_Tipo	         : out std_logic_vector (7 downto 0); --El siete segementos donde se mostrará el dígito.
+		look_state        : out std_logic_vector (6 downto 0); -- Mirar el estado en el que va
+		ver_tipo      : out std_logic_vector (7 downto 0);
+		ver_TanqueA      : out std_logic_vector(11 downto 0);
+		ver_TanqueC      : out std_logic_vector(10 downto 0);
+		ver_Tanques   : out std_logic_vector(1 downto 0);
+		ver_Confirmar    : out std_logic 
+	  );
+end Expreso;              
+
+--Definimos la arquitectura
+--Y  procedemos a poner los bloques con sus respectivas entradas y salidas
+
+architecture ExpresoArch of Expreso is
+
+	
+		component Control 
+		port(
+		
+	port(
+
+Reloj     : in std_logic;
+Reset     : in std_logic;
+Usuario : in std_logic_vector(1 downto 0); 
+Tipo_Expreso_Control  : in std_logic; 
+Expreso_Disponible_Control : in std_logic;
+Cantidad_Agua_Control : in std_logic;
+Cantidad_Cafe_Control : in std_logic;
+Contador_Agua_Control : in std_logic;
+Contador_Cafe_Control : in std_logic;
+Expreso_Listo_Control : in std_logic;
+Llenado_Cafe : in std_logic;
+Llenado_Agua : in std_logic;
+Confirmar : in std_logic;
+Boton_Vaso : in std_logic;
+
+
+Control_Cantidad_Cafe  : out std_logic_vector(3 downto 0) ;--4 bits
+Control_Cantidad_Agua : out std_logic_vector(5 downto 0); -- 6 bits
+Control_Contador_Agua : out std_logic_vector(11 downto 0);
+Control_Contador_Cafe : out std_logic_vector(10 downto 0);
+Valvula_Agua : out std_logic_vector(5 downto 0);
+Valvula_Cafe : out std_logic_vector(3 downto 0);
+Led_Expreso_Listo : out std_logic;
+Led_Llenar_Almacenamiento : out std_logic;
+ver_Estados : out std_logic_vector(10 downto 0);
+
+	); 
+ 
+		end component;
+------------------------------------------------------------
+-----------------------------------------------------------reloj,reset,E_comunicacion,control_guardar,guardar_decodificar,guardar_verificar
+		component Tipo_Expreso 
+		port(
+
+			Usuario: in std_logic_vector (1 downto 0) ; -- a b
+			Tipo_Expreso_Expreso_Disponible	: out std_logic_vector (9 downto 0)-- a b c d
+ 
+		);
+		end component Tipo_Expreso;
+-------------------------------------------------------------
+--***************Expreso_Disponible*************----
+-----------------------------------------------------------
+		component Comparador_C-- Comparador 11 bits
+		port(    
+				Mayor			: out std_logic;
+				Menor         		: out std_logic;
+          	Igual			: out std_logic;
+		
+				a :   in std_logic_vector(10 downto 0);
+				b :   in std_logic_vector(10 downto 0)
+			
+		);
+		end component Comparador_C;
+-------------------------------------------------------------
+------------------------------------------------------------
+		component Comparador_A-- Comparador de 12 bits 
+		port(    
+				Mayor			: out std_logic;
+				Menor       : out std_logic;
+          	Igual			: out std_logic;
+		
+				a :   in std_logic_vector(11 downto 0);
+				b :   in std_logic_vector(11 downto 0)
+			
+		);
+		end component Comparador_A;
+-------------------------------------------------------------
+	--******************************************************--
+------------------------------------------------------------
+		component Cantidad_Agua
+		port(
+			Reloj     : in std_logic;
+			Reset     : in std_logic;
+			Control_Cantidad_Agua  : in std_logic; 
+			Cantidad_Agua_Control  : out std_logic ; 
+			Ver_Conteo        		: out std_logic_vector(5 downto 0)
+		); 
+		end component Cantidad_Agua;
+-------------------------------------------------------------
+-----------------------------------------------------------
+		component Cantidad_Cafe
+		port(
+				Reloj     : in std_logic;
+				Reset     : in std_logic;
+				Control_Cantidad_Cafe  : in std_logic; 
+				Cantidad_Cafe_Control  : out std_logic ; 
+				Ver_Conteo        : out std_logic_vector(3 downto 0)
+		); 
+		end component Cantidad_Cafe;
+-------------------------------------------------------------
+-----------------------------------------------------------
+		component Contador_Agua is 
+		port(
+			Reloj     : in std_logic;
+			Reset     : in std_logic;
+			Control_Contador_Agua  : in std_logic; 
+			Contador_Agua_Expreso_Listo : out std_logic ; 
+--Reinicio: in std_logic;
+			Error  : out std_logic;
+			Ver_Conteo : out std_logic_vector(11 downto 0)
+		); 
+		end component Contador_Agua;
+-------------------------------------------------------------
+-----------------------------------------------------------
+		component Contador_Cafe is 
+		port(
+			Reloj     : in std_logic;
+			Reset     : in std_logic;
+			Control_Contador_Cafe  : in std_logic; 
+			Contador_Cafe_Control  : out std_logic ; 
+			Ver_Conteo        : out std_logic_vector(10 downto 0)
+		); 
+		end component Contador_Cafe;
+-------------------------------------------------------------
+-----------------------------------------------------------
+		component Deco_7_Seg is 
+		port(
+
+				Usuario: in std_logic_vector (0 to 3) ; -- x y z w
+				Expreso_Tipo : out std_logic_vector (0 to 6)-- a b c d e f g 
+ 
+);
+		end component Deco_7_Seg;
+-------------------------------------------------------------
+
+----------------------------Señales de union entre bloques--------------
+
+--Inputs Control
+		signal Tipo_Expreso_Control    	   	: std_logic;
+		signal Expreso_Disponible_Control          : std_logic;
+		signal Cantidad_Agua_Control           : std_logic; --
+		signal Cantidad_Cafe_Control           : std_logic; --
+		signal Contador_Agua_Control           : std_logic; --
+		signal Contador_Cafe_Control				 : std_logic; --
+		signal Expreso_Listo_Control			 	: std_logic; --
+
+--Outputs Control	
+		
+		signal Control_Cantidad_Agua      : std_logic_vector(5 downto 0); --
+		signal Control_Cantidad_Cafe      : std_logic_vector(3 downto 0); --
+		signal Control_Contador_Agua     : std_logic_vector(11 downto 0);
+		signal Control_Contador_Cafe     : std_logic_vector(10 downto 0);
+		signal control_guardar            : std_logic;--OJO
+		signal control_filtro             : std_logic;--OJO
+
+
+       signal Tipo_Expreso_Expreso_Disponible     : std_logic_vector(9 downto 0);
+       signal Usuario_Deco_7_Seg       : std_logic_vector(3 downto 0);
+       signal guardar_verificar            : std_logic_vector(7 downto 0);
+		  
+		 signal ver_estados                  :  std_logic_vector(6 downto 0);
+		 signal ver_conteo                   : std_logic_vector (13 downto 0);
+		 signal mirar 								 : std_logic_vector(0 to 1);
+		 
+		 
+Valvula_Agua : out std_logic_vector(5 downto 0);
+Valvula_Cafe : out std_logic_vector(3 downto 0);
+Led_Expreso_Listo : out std_logic;
+Led_Llenar_Almacenamiento : out std_logic;
+ver_Estados : out std_logic_vector(10 downto 0);
+---------------------------------------------------------------------------
+--******************************************************--
+--Instancias y Conectividad                             --
+--******************************************************--
+begin
+
+-------Definicion de las entradas y salidas y emperejamientos de salidas.
+controlm: control port map(Reloj,Reset,E_comunicacion,verificar_control,contador_1_control,contador_control,ver_estados,control_contador,control_contador_1,control_guardar,control_filtro);
+guardarm: guardar port map(reloj,reset,E_comunicacion,control_guardar,guardar_decodificar ,guardar_verificar);         
+
+contadorm: contador port map(Reloj,Reset,control_contador,contador_control,ver_conteo);
+contador_1m: contador_1 port map(Reloj,Reset,control_contador_1,contador_1_control);
+
+filtrom: filtro port map (digito,filtro_decodificador,control_filtro);
+verificarm: verificar port map (guardar_verificar,verificar_control,mirar);
+decodificarm: decodificar port map (guardar_decodificar,filtro_decodificador);
+
+ver_guardar <= guardar_verificar;
+look_state <= ver_estados;
+ver_verificar <= verificar_control;
+--ver_cont <= contar_control;
+ver_visualizar <= mirar;
+ver_contador <= ver_conteo;
+relojito<=reloj;
+ver_fin_conteo<=contador_control;
+e_comication<=e_comunicacion;
+
+End serialArch;

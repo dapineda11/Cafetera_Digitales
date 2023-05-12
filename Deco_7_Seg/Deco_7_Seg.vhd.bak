@@ -1,0 +1,34 @@
+library IEEE; 
+use IEEE.std_logic_1164.all; 
+
+--******************************************************--
+-- Autor:   --
+--     Julian Oviedo   --
+--   --
+--                --
+--******************************************************--
+
+entity Deco_7_Seg is
+port(
+
+ Usuario: in std_logic_vector (0 to 3) ; -- x y z w
+ Expreso_Tipo : out std_logic_vector (0 to 6)-- a b c d e f g 
+ 
+);
+        
+end entity Deco_7_Seg;     
+
+architecture Deco_7_SegArch of Deco_7_Seg is
+begin
+
+ Expreso_Tipo(0) <=  ((Usuario(0) OR Usuario(1) OR Usuario(2) OR NOT Usuario(3)) AND (Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR Usuario(3)) AND (NOT Usuario(0) OR Usuario(1) OR NOT Usuario(2) OR NOT Usuario(3)) AND (NOT Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR NOT Usuario(3)));--a
+ Expreso_Tipo(1) <=  ((Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR NOT Usuario(3)) AND (Usuario(0) OR NOT Usuario(1) OR NOT Usuario(2) OR Usuario(3)) AND (NOT Usuario(0) OR Usuario(1) OR NOT Usuario(2) OR NOT Usuario(3)) AND (NOT Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR Usuario(3)) AND (NOT Usuario(0) or NOT Usuario(1) or NOT Usuario(2) or Usuario(3)) AND (NOT Usuario(0) or NOT Usuario(1) or NOT Usuario(2) or NOT Usuario(3)));--b
+ Expreso_Tipo(2) <=  ((Usuario(0) OR Usuario(1) OR NOT Usuario(2) or  Usuario(3)) AND (NOT Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR Usuario(3)) AND (NOT Usuario(0) OR NOT Usuario(1) OR NOT Usuario(2) or  Usuario(3)) AND (NOT Usuario(0) OR NOT Usuario(1) OR NOT Usuario(2) OR NOT Usuario(3)));--c
+ Expreso_Tipo(3) <=  ((Usuario(0) OR Usuario(1) OR Usuario(2) OR NOT Usuario(3)) AND (Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR Usuario(3)) AND (Usuario(0) OR NOT Usuario(1) OR NOT Usuario(2) OR NOT Usuario(3)) AND (NOT Usuario(0) OR Usuario(1) OR NOT Usuario(2) OR Usuario(3)) AND (NOT Usuario(0) OR NOT Usuario(1) OR NOT Usuario(2) OR NOT Usuario(3)) );--d
+ Expreso_Tipo(4) <=  ((Usuario(0) OR Usuario(1) OR Usuario(2) OR NOT Usuario(3)) AND (Usuario(0) OR Usuario(1) OR NOT Usuario(2) OR NOT Usuario(3)) AND (Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR Usuario(3)) AND (Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR NOT Usuario(3)) AND (Usuario(0) OR NOT Usuario(1) OR NOT Usuario(2) OR NOT Usuario(3)) AND (NOT Usuario(0) OR Usuario(1) OR Usuario(2) OR NOT Usuario(3)));--e
+ Expreso_Tipo(5) <=  ((Usuario(0) OR Usuario(1) OR Usuario(2) OR NOT Usuario(3)) AND (Usuario(0) OR Usuario(1) OR NOT Usuario(2) OR Usuario(3)) AND (Usuario(0) OR Usuario(1) OR NOT Usuario(2) OR NOT Usuario(3)) AND (Usuario(0) OR NOT Usuario(1) OR NOT Usuario(2) OR NOT Usuario(3)) AND (NOT Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR NOT Usuario(3)));--f
+ Expreso_Tipo(6) <=  ((Usuario(0) OR Usuario(1) OR Usuario(2) OR Usuario(3)) AND (Usuario(0) OR Usuario(1) OR Usuario(2) OR NOT Usuario(3))AND (NOT Usuario(0) OR NOT Usuario(1) OR Usuario(2) OR Usuario(3)));--g
+ 
+ 
+End Deco_7_SegArch;
+
